@@ -1,0 +1,73 @@
+1. Que es react.js
+2. Instala Herramientas.
+  En la Chrome web store busca: React Developer Tools.
+3. Ve a la documentacion oficial de React.js
+  https://es.reactjs.org/docs/getting-started.html
+4. Para iniciar:
+  Vamos a Create React App 
+  Como vemos en la documentacion vamos a copiar en nuestra Terminal:
+    npx create-react-app discipulados
+  En nuestro caso a aplicacion se va a llamar "discipulados"
+  Esperamos a que cargue todos los recursos necesarios para la arquitectura de nuestra aplicacion.
+5. React DOM
+  Para nuestro caso eliminamos dentro de src a los archivos llamados App
+  Dentro de nuestro archivo index.js mostraremos como ejemplo primero como es que antes haciamos para crear elementos en javascript y como los insertabamos en el HTML.
+    //Forma antigua de generar elementos
+    const element = document.createElement('h1')
+    element.innerText = 'Hello React'
+    const container = document.getElementById('root')
+    container.appendChild(element)
+  Ahora como se va a empezar a utilizar en React
+    import React from 'react'
+    import ReactDOM from 'react-dom'
+
+    const element = <h1>Hello React</h1>
+    const container = document.getElementById('root')
+
+    ReactDOM.render(__QUE__, __DONDE__)
+  Aqui es donde vamos a empezar ReactDOM que tienes varios metodos entre ellos render (recibe dos parametros), que en este caso sera usado para ver QUE va a modificar y DONDE lo va a hacer.
+  Note ademas que como es acostumbrado cuando queremos crear un elemento primero instanciamos la creacion y luego con innerText le agregamos el contenido de dicho elemento. Pero:
+    const element = <h1>Hello React</h1>
+  Aqui se hace todo en la misma sentencia. Esto es gracias a:
+    JSX
+6. JSX
+  Esta curiosa sintaxis de etiquetas no es ni un string ni HTML.
+
+  Se llama JSX, y es una extensión de la sintaxis de JavaScript. Recomendamos usarlo con React para describir cómo debería ser la interfaz de usuario. JSX puede recordarte a un lenguaje de plantillas, pero viene con todo el poder de JavaScript.
+
+  JSX produce “elementos” de React.
+
+  MUY IMPORTANTE:
+    Para poder usar JSX debes incorporar React porque de lo contrario no podras usarlo
+  Ahora vamos a ver como estamos usando JSX en el proyecto y como esto nos ayuda en el desarrollo:
+    const name = 'Eduardo'
+    const user = {
+      firstName : 'Eduardo',
+      lastName : 'Mejias',
+      avatar : 'https://firebasestorage.googleapis.com/v0/b/discipulados-react.appspot.com/o/icon_church_128px.png?alt=media&token=8cf27fb0-066a-4d4e-b95d-b2a48f52e50f'
+    }
+    function getName(user){
+      return `${user.firstName} ${user.lastName}`;
+    }
+    function getGreeting(user){
+      if(user){
+          return <h1>Hello {getName(user)} </h1>
+      }
+      return <h1>Hello Extraño XD</h1>
+    }
+    //const element = <h1>Hello {getName(user)} </h1>
+    //const element = <div>{getGreeting(user)} </div>
+    //const element = <img src={user.avatar}  />
+    const element = (
+      <div>
+        <h1>{getGreeting(user)} </h1>
+        <img src={user.avatar}  />
+      </div>
+    )
+    const container = document.getElementById('root')
+    ReactDOM.render(element, container)
+  Como podemos notar creamos un objeto de JS llamado user que contiene los nombres y el avatar de un "usuario". Ahora bien como podemos hacer uso de ese objeto y usar en  la vista de nuestra app. Pues aqui nos hemos creado un par de funciones. Una de ellas getName(user) ella accede a los atributos de los nombres del objeto usuario y nos lo devuelve en el llamado que le hacemos.
+  Tambien tenemos otra funcion llamada getGreeting(user) y no es mas que una funcion que valida si tiene un parametro que se le este pasando pues nos mostrara una informacion y sino pues nos mostrara otra informacion. Por ultimo tenemos 4 veces creado la constante "element" y con ellas hacemos uso de diversas formas en que podemos cargar informacion de objetos de JS dentro de ella para luego ser agregada a ota constante llamada "container" que sera quien contenga el elemento que estamos creando.
+  Para saber mas de JSX podemos ir a la documentacion oficial en:
+    https://es.reactjs.org/docs/introducing-jsx.html#gatsby-focus-wrapper
+6.
