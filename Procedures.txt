@@ -70,4 +70,32 @@
   Tambien tenemos otra funcion llamada getGreeting(user) y no es mas que una funcion que valida si tiene un parametro que se le este pasando pues nos mostrara una informacion y sino pues nos mostrara otra informacion. Por ultimo tenemos 4 veces creado la constante "element" y con ellas hacemos uso de diversas formas en que podemos cargar informacion de objetos de JS dentro de ella para luego ser agregada a ota constante llamada "container" que sera quien contenga el elemento que estamos creando.
   Para saber mas de JSX podemos ir a la documentacion oficial en:
     https://es.reactjs.org/docs/introducing-jsx.html#gatsby-focus-wrapper
-6.
+7.Repositorio del proyecto
+  En mi caso esta alojado en mi repositorio remoto de GitHub:
+    https://github.com/AvilaPro/prac_react_1.git
+  Cada capitulo estara guardado con una confirmacion
+  Si descargas o "clonas" este repositorio en una computadora distinta a donde se realizo el proyecyo original, pues una vez instalado o "clonado" deberas abrir tu terminal y ejecutar:
+    npm i
+  para que se instalen las dependencias que hagan falta.
+8.Componentes y propiedades
+  En la documentacion:
+    https://es.reactjs.org/docs/components-and-props.html
+  Podemos ver los conceptos generales del mismo.
+  Necesario saber que es un componente y segundo como contruir un componente. Los componentes son como las funciones de JS y esto va a devolver elementos que describen lo que debe aparecer en pantalla. 
+    Un Elemento es a un Componente como un Objeto es a una Clase
+  Es indispensable poder identificar que es un componente.
+  Dos cosas son importantes en esta identificacion:
+    1. Que elementos ser repiten en la interfaz.
+    2. Que elemento cumplen una funcion en especifico.
+  Practica de identificacion de elementos:
+    Veamos el sitio de Netflix
+    Identifiquemos algunos elementos que se repiten
+    -En el nav se repiten los botones que determinan lo que se quiere ver como Series, Pelicula, entre otros. Se le puede llamar componente link.
+    -Hay otro componente que es el titulo de una seccion.
+    -Cada pelicula o serie es un componente que se repite.
+    Elementos que NO se repiten:
+    -El logo de netflix que redirige al home del sitio
+    -El boton de 'search' que despliega el input para que se pueda escribir lo que se desea buscar.
+    -El boton de 'notificaciones'
+    -El boton que contiene el avatar del usuario y una flecha que indica el mostrar mas opciones del perfil y configuracion del usuario
+      
