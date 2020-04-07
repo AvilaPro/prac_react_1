@@ -124,4 +124,45 @@
   Ademas la inclusion de la imagen que queremos en la card lo hacemos de la siguiente manera:
     import discipuladoImg from '../images/mariposa1.png'
   Por supuesto que primeramente debemos crear la carpeta images en src/ para luego indexarla el la propiedad src de nuestro elemento img.
-
+10. Agregando CSS a los componentes
+  Una de las formas que podemos usar para agregar estilos css a nuestros componentes es creando aparte un archivo de css (como normalmente hacemos en desarrollo standard front-end, alli declaramos las clases a usar y luego las usamos asignando esas propedades a los elementos de html). Para ello podemos crear una carpeta dentro de components/ llamada styles/ y alli crear cada tipos de estilos de los componenetes. Para ayudarnos en la lectura de los archivos conviene llamar cada hoja de estilo tla como se llama el Componente. En nuesto caso le hemos llamado Card.
+    .card {
+      border: none;
+      border-radius: 8px;
+      background: url('../../images/circles.png') no-repeat, linear-gradient(to right, #A74CF2, #617BFB);
+    }
+    .Discipulos-User-Info {
+      margin-top: 50px;
+      margin-bottom: 50px;
+      margin-left: 200px;
+    }
+    .Discipulos-Card {
+      max-height: 140px;
+      max-width: 520px;
+    }
+    .Discipulos-Card-Info {
+      padding-left: 0;
+      padding-right: 75px;
+    }
+    .Discipulos-Card-Info h1{
+      font-size: 23px;
+      color: white;
+    }
+    .Discipulos-Card-Info p{
+      font-size: 11px;
+      color: white;
+    }
+    .Discipulos-Add {
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      margin-top: 100px;
+      margin-bottom: 80px;
+      height: 60px;
+    }
+  NOTA: Ahora podemos usar estas clases en nuestros componentes de react. Pero hay un detalle muy importante!!! no podemos dentro de JavaScript usar la palabra "class" para asignar a etiquetas de HTML una clase, ya que en JavaScript la palabra class es una palabra reservada para crear o invocar o hacer referencia a una clase. Por ello nosotros podemos usar en JavaScript la palabra "className"
+  NOTA: Para implementar Bootstrap en nuestro proyecto podemos instalarlo con el uso de nom a traves del terminal:
+    npm i bootstrap
+  Y luego para tenerlo disponibles en cualquier componente dentro de nuestro index, pues lo importamos dentro de nuestro index.js de la siguiente manera:
+    import 'bootstrap/dist/css/bootstrap.css'
+  
