@@ -98,4 +98,30 @@
     -El boton de 'search' que despliega el input para que se pueda escribir lo que se desea buscar.
     -El boton de 'notificaciones'
     -El boton que contiene el avatar del usuario y una flecha que indica el mostrar mas opciones del perfil y configuracion del usuario
-      
+  Existen varios tipos de componentes, unos son funcionales y otros son de clase.
+9. Primer Componente
+  Para React se considera una buena practica que cada componente "viva" en su propio archivo. Para ello se les crea una carpeta. En nuestro caso dentro de src/ creamos una carpeta llamada components/. Creamos un archivo para el componente que llamaremos Card.
+  Primero para crear nuestros componentes debemos importar la clase de react dentro del mismo para que pueda funcionar como se desea:
+    import React from 'react'
+  Segundo creamos la respuesta que nuestro componente va a hacer, creamos una clase que extiende de React.Component y seguido la funcion render que es lo que dicho componente va a devolver:
+    class Card extends React.Component {
+      render(){
+        return(
+          <div>
+            <div>
+              <img src={discipuladoImg} />
+            </div>
+            <div>
+              <h1>Guias Practicas</h1>
+              <p>Aprende las practicas fundamentales del discipulo</p>
+            </div>
+          </div>
+        )
+      }
+    }
+  Por ultimo debemos exportar la respuesta para que este disponible para todo nuestro proyecto y pueda ser utilizado cuando lo necesitemos:
+    export default Card
+  Ademas la inclusion de la imagen que queremos en la card lo hacemos de la siguiente manera:
+    import discipuladoImg from '../images/mariposa1.png'
+  Por supuesto que primeramente debemos crear la carpeta images en src/ para luego indexarla el la propiedad src de nuestro elemento img.
+

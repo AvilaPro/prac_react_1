@@ -8,8 +8,17 @@ container.appendChild(element) */
 
 import React from 'react'
 import ReactDOM from 'react-dom'
+import Card from './components/Card'
 
-const name = 'Eduardo'
+
+
+const container = document.getElementById('root')
+
+//ReactDOM.render(__QUE__, __DONDE__)
+ReactDOM.render(<Card/>, container)
+
+//Comentado en cap 9 para hacer la inclusion de nuestros componentes correctamente
+/* const name = 'Eduardo'
 const user = {
   firstName : 'Eduardo',
   lastName : 'Mejias',
@@ -35,8 +44,4 @@ const element = (
     <h1>{getGreeting(user)} </h1>
     <img src={user.avatar}  />
   </div>
-)
-
-const container = document.getElementById('root')
-
-ReactDOM.render(element, container)
+) */
