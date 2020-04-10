@@ -237,6 +237,30 @@
         </div>
       </div>
     );
-  
-
-  
+12. El State 
+  Exiten dos tipos de datos que controlan un componente:
+    Las props y 
+    El State
+  Las props son establecidas por el padre y son fijas durante toda la vida de un componente.
+  Para la parte de los datos que van a cambiar hay que usar el State
+  Al igual que las props el State contiene informacion sobre el componente sin embargo el tipo de informacion y como se maneja es diferente. Inicia con un valor cuando se monta el componente y va cambiando a lo largo del tiempo. Esto en su mayoria generado por eventos del usuario.
+  El primer paso para trabajar con States es importante definir Componentes de Clase como ya hicimos con el Card. 
+  Lo siguiente es definir un constructor dentro de dicha clase:
+    constructor(props){
+    super(props)
+    this.state = {
+      image: 'https://firebasestorage.googleapis.com/v0/b/discipulados-react.appspot.com/o/perro_sf.png?alt=media&token=bc64cec4-05b9-4b87-89b8-297ac7b43b6a'
+    }
+  Como vemos definimos un valor predeterminado pues este es el valor que tendra al principio nuestro State. Aqui hemos definido una imagen para el estado inicial del componente. Por ello la propiedad que estabamos usando era de props llamado "img". Ahora o sustituiremos por el dato que esta en el State.
+    <img src={this.state.image} className="float-right" id="Discipulos-img" />
+  Ya con esto tenemos un estado inicial, y esto va a cambiar con eventos del usuario. Por el momento no vamos a ver como capturar eventos de un usuario pero vamos a simularlo con:
+    componentDidMount()
+  Esto no es mas que una funcion que se ejecuta apenas el componente es montado. Esto forma parte de vida de un componente que veremos mas adelante:
+    componentDidMount( ){
+      setTimeout(() => {
+        this.setState({
+          image: 'https://firebasestorage.googleapis.com/v0/b/discipulados-react.appspot.com/o/mariposa%20copy.png?alt=media&token=c9d15a6b-559d-4940-8d5a-8f9f27beddc5'
+        })
+      }, 5000)
+    }
+  Con esta funcion luego de 5 segundos se cambiara el State de la imagen cambiandola por otra al momento.
