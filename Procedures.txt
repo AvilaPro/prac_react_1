@@ -125,7 +125,7 @@
     import discipuladoImg from '../images/mariposa1.png'
   Por supuesto que primeramente debemos crear la carpeta images en src/ para luego indexarla el la propiedad src de nuestro elemento img.
 10. Agregando CSS a los componentes
-  Una de las formas que podemos usar para agregar estilos css a nuestros componentes es creando aparte un archivo de css (como normalmente hacemos en desarrollo standard front-end, alli declaramos las clases a usar y luego las usamos asignando esas propedades a los elementos de html). Para ello podemos crear una carpeta dentro de components/ llamada styles/ y alli crear cada tipos de estilos de los componenetes. Para ayudarnos en la lectura de los archivos conviene llamar cada hoja de estilo tla como se llama el Componente. En nuesto caso le hemos llamado Card.
+  Una de las formas que podemos usar para agregar estilos css a nuestros componentes es creando aparte un archivo de css (como normalmente hacemos en desarrollo standard front-end, alli declaramos las clases a usar y luego las usamos asignando esas propedades a los elementos de html). Para ello podemos crear una carpeta dentro de components/ llamada styles/ y alli crear cada tipos de estilos de los componenetes. Para ayudarnos en la lectura de los archivos conviene llamar cada hoja de estilo tal como se llama el Componente. En nuesto caso le hemos llamado Card.
     .card {
       border: none;
       border-radius: 8px;
@@ -165,4 +165,78 @@
     npm i bootstrap
   Y luego para tenerlo disponibles en cualquier componente dentro de nuestro index, pues lo importamos dentro de nuestro index.js de la siguiente manera:
     import 'bootstrap/dist/css/bootstrap.css'
+11. Las props
+  Como vemos hasta ahora nuestro Componente creado llamado Card tiene mucho "hard code" es decir el contenido dentro de dicho Componente lo hemos ingresado manualmente a traves del codigo y no haciendo referencia de otra parte para hacerlo reutilizable, como mas porbable podria ser por ejemplo, la respuesta json de una api que podamos indexar dentro del Componente o recibir objetos de una base de datos e ingresar la informacion necesaria dentro del componente.
+  Por ello existe "props"
+  Los parametros que podemos pasarles a nuestros componentes se les denomina "props" y vamos a ver como enviarle propiedades a nuestros componentes.
+  En nuestro caso, las card pueden recibir como propiedad lo siguiente:
+    combinacion de colores del background
+    texto de las etiquetas
+  Ahora al caso.
+  Primero que todo en nuestro componente que hemos llamado Card vamos a ir cambiando los estios de la misma. Primero que todo en Card.css la propiedad .card el background lo comentamos y lo copiamos en la propiedad style de nuestro primer div de la Card en el archivo Card.js:
+    <div className="card mx-auto Discipulos-Card" 
+      style={{ 
+        backgroundImage: `url(${circlesImg}), linear-gradient(to right, #A74CF2, #617BFB)`,
+      }} 
+    >
+  Esta inclusion se le llama "estilos en linea". Como vemos aqui ecribimos la propiedad como backgroundImage.
+  Ademas "importamos" dentro del archivo Clase.js la carpeta que contiene la iamgen de los circulos:
+    import circlesImg from '../images/circles.png'
+  Notemos que hemos interpolado la ruta de la imagen.
+  Gracias a los estilos en linea podemos embeber variables como en este caso pudimos incluir a los circulos.
+  Ahora como podemos enviarle diferentes propiedades a un componente?
+  Pues en nuestro archivo index.js como ya hemos hablado en el capitulo 5 de ReactDOM y la propiedad render pues aqui el elemento que vamos a renderear es la Card, pero no solo eso, si no que tambien vamos a indicar las propiedades que vamos a asignar a dicho componente:
+    ReactDOM.render(<Card
+                  title="Guias Practicas"
+                  description="Aprende las practicas fundamentales del discipulo"
+                  img="https://firebasestorage.googleapis.com/v0/b/discipulados-react.appspot.com/o/icon_church_128px.png?alt=media&token=8cf27fb0-066a-4d4e-b95d-b2a48f52e50f"
+                  leftColor="#A74CF2"
+                  rightcolor="#617BFB"
+                />, container)
+  Como vemos nos hemos traido la informacion de Card.js y en breve debemos enviar esta informacion a nuestro componente. Con ayuda de la propiedad "props" lo hacemos en nuestro Card.js:
+    <div className="card mx-auto Discipulos-Card" 
+      style={{ 
+        backgroundImage: `url(${circlesImg}), linear-gradient(to right, ${this.props.leftColor}, ${this.props.rightColor})`,
+
+       }} 
+      >
+        <div className="card-body" >
+          <div className="row center">
+            <div className="col-6">
+              <img src={this.props.img} className="float-right" id="Discipulos-img" />
+            </div>
+            <div className="col-6 Discipulos-Card-Info" >
+              <h1>{this.props.title}</h1>
+              <p>{this.props.description} </p>
+            </div>
+          </div>
+        </div>
+      </div>
+  Hemos interpolado las propiedades desde nuestro render en index.js.
+  Pero hay una manera mas eficiente de hacerlo, y es la siguiente:
+  Pues con ES6 lo podemos hacer mas sencillo con el 'destructring' de las propiedades de un objeto. Como podemos hacerlo? Pues creamos una constante que contiene cada una de las propiedades de props, como sigue:
+    const { title, description, img, leftColor, rightColor } = this.props
+  Ahora para interpolarlos solo usamos el nombre que corresponde a su constante:
+    return (
+      <div className="card mx-auto Discipulos-Card" 
+      style={{ 
+        backgroundImage: `url(${circlesImg}), linear-gradient(to right, ${leftColor}, ${rightColor})`,
+
+       }} 
+      >
+        <div className="card-body" >
+          <div className="row center">
+            <div className="col-6">
+              <img src={img} className="float-right" id="Discipulos-img" />
+            </div>
+            <div className="col-6 Discipulos-Card-Info" >
+              <h1>{title}</h1>
+              <p>{description} </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  
+
   

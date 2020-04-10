@@ -15,7 +15,13 @@ import 'bootstrap/dist/css/bootstrap.css'
 const container = document.getElementById('root')
 
 //ReactDOM.render(__QUE__, __DONDE__)
-ReactDOM.render(<Card/>, container)
+ReactDOM.render(<Card
+                  title="Mi titulo"
+                  description="Aprende las practicas fundamentales del discipulo"
+                  img="https://firebasestorage.googleapis.com/v0/b/discipulados-react.appspot.com/o/mariposa%20copy.png?alt=media&token=c9d15a6b-559d-4940-8d5a-8f9f27beddc5"
+                  leftColor="#A74CF2"
+                  rightColor="#617BFB"
+                />, container)
 
 //Comentado en cap 9 para hacer la inclusion de nuestros componentes correctamente
 /* const name = 'Eduardo'
